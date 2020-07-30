@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Data/APIs 1</title>
+</head>
+<body>
+    <h1>Go Fetch</h1>
+    <h3>Let's play a game! Fetch me a gif, a lyric and a video.</h3>
+    <br><br>
+    
+    <h3>Fetch a Rainbow</h3>
+    <img src="" id="bob"/>
+    <script>
+        console.log("Let's fetch a rainbow!");
+
+        fetchRainbow()
+            .then(response => {
+                console.log("Done");
+            })
+            .catch(error => {
+                console.log("Error!");
+                console.error(error);
+            });
+
+            async function fetchRainbow() {
+                const response = await fetch('rainbow.gif');
+                const blob = await response.blob();
+                document.getElementById("bob").src = URL.createObjectURL(blob);
+            }
+    </script>
+
+<h3>Fetch a Lyric</h3>
+<p id="lyric"/>
+<script>
+    console.log("Let's fetch a Lyric!");
+    
+    fetchLyric()
+    .then(lyric => {
+        document.getElementById('lyric').innerText = lyric;
+        console.log("Done");
+    })
+    .catch(error => {
+        console.log("Error!");
+        console.error(error);
+    });
+
+    async function fetchLyric() {
+    const response = await fetch('lyric.txt');
+    return await response.text();
+    }
+</script>
+
+<h3>Fetch a Video</h3>
+
+
+
+</body>
+</html>
